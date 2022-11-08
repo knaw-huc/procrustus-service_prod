@@ -1,14 +1,10 @@
 version: '2'
 
-networks:
-  browser_network:
-    external:
-      name: nginxproxynetwork
 
 services:
   elastic:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.14.2
-    container_name: ecodices_es
+    container_name: procrustus_es
     environment:
       - discovery.type=single-node
       - ES_JAVA_OPTS=-Dlog4j2.formatMsgNoLookups=true
@@ -16,8 +12,7 @@ services:
       - 9200:9200
     volumes:
       - ga_es:/usr/share/elasticsearch/data
-    networks:
-      - browser_network
+
 
   pyservice:
     build:
@@ -30,5 +25,3 @@ services:
       - 5000:5000
     volumes:
       - /home/robz/:/home
-    networks:
-      - browse_network
