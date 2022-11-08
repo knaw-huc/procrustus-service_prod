@@ -22,9 +22,9 @@ ENV LANGUAGE en_US.UTF-8
 COPY ./src/app.py /app
 COPY ./src/elastic_index.py /app
 COPY ./src/store.py /app
-ADD .src/handlers /app
-ADD .src/queries /app
-ADD .src/misc /app
+ADD ./src/handlers /app
+ADD ./src/queries /app
+ADD ./src/misc /app
 
 ENV FLASK_APP=/app/app.py
 ENV FLASK_ENV=production
